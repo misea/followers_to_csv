@@ -1,0 +1,16 @@
+{
+  "name": "follows_to_csv",
+  "version": "0.1.0",
+  "description": "Outputs list of followers to a csv file",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mark Igra",
+  "license": "GPL-3.0-or-later",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12",
+    "papaparse": "^5.3.2"
+  }
+}
