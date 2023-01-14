@@ -34,7 +34,6 @@ export async function saveFollowersCsv(handle, csvPath) {
 }
 
 //Should check if called from command line to allow reuse, but just a util for now
-console.log(process.argv);
 if (process.argv.length !== 4) {
     console.log("Usage: node followers_csv.js @user@instance csvfile_path.csv")
 } else {
