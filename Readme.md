@@ -1,4 +1,4 @@
-# follows_to_csv
+# followers_to_csv
 
 This repository contains a script to export a *public* Mastodon account's followers to a csv file similar to those
 used in many of the [Academics of Mastodon](https://nathanlesage.github.io/academics-on-mastodon/) lists,
