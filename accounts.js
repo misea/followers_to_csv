@@ -8,6 +8,7 @@ export async function getAccount(handle) {
       accountArray = ret.accounts || [];    
   } catch (e) {
     console.error(e);
+    throw new Error(`Error attempting to get account information for ${handle}`);
   }
 
   if (accountArray.length >= 1) {
@@ -40,6 +41,7 @@ export async function getFollowers(handle) {
 
   const account = await getAccount(handle);
   const accountId = account.id;
+  const MAX_ACCOUNTS = 4000; //50 requests
 
   async function getBatch(url) {
       console.log(url);
@@ -65,14 +67,15 @@ export async function getFollowers(handle) {
   const followers = [];
   const {instance} = splitHandle(handle);
   let url = `https://${instance}/api/v1/accounts/${accountId}/following?limit=80`
-  let requestCount = 0;
-  while (url && requestCount < 20) {
+  while (url && followers.length < MAX_ACCOUNTS) {
       let batch = await getBatch(url);
       batch.accounts.forEach(account=>{
           followers.push(account)
       });
       url = batch.nextUrl;
-      requestCount++;
+  }
+  if (followers.length >= MAX_ACCOUNTS) {
+    console.log(`Account list may be incomplete, no more than ${MAX_ACCOUNTS} supported.`)
   }
 
   return followers;
