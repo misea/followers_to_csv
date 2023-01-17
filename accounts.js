@@ -66,7 +66,7 @@ export async function getFollowers(handle) {
 
   const followers = [];
   const {instance} = splitHandle(handle);
-  let url = `https://${instance}/api/v1/accounts/${accountId}/following?limit=80`
+  let url = `https://${instance}/api/v1/accounts/${accountId}/followers?limit=80`
   while (url && followers.length < MAX_ACCOUNTS) {
       let batch = await getBatch(url);
       batch.accounts.forEach(account=>{
