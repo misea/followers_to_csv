@@ -18,12 +18,12 @@ function accountsToCsv(accounts, instance, csvPath) {
     const csvData = accounts.map(account => {
         const accountHandle = canonicalHandle(account.acct, instance);
         return {
-            account: accountHandle,
+            "Account address": accountHandle,
             name: account.display_name || splitHandle(accountHandle).userName,
             keywords: extractKeywords(account.note).join(' ')
         }
     })
-    fs.writeFileSync(csvPath, Papa.unparse(csvData));
+    fs.writeFileSync(csvPath, Papa.unparse(csvData, {columns:["Account address", "name", "keywords"]}));
     return csvData;
 }
 
