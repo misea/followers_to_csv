@@ -2,19 +2,20 @@
 
 This repository contains a script to export a *public* Mastodon account's followers to a csv file similar to those
 used in many of the [Academics of Mastodon](https://nathanlesage.github.io/academics-on-mastodon/) lists,
-which are also compatible with [find.sciences.social](https://find.sciences.social).
+which are also compatible with [find.sciences.social](https://find.sciences.social). 
 
 The generated file contains 3 columns:
 
+- Account address: The full Mastodon handle of the follower. Name is different from Academics of Mastodon but same as what Mastodon importer uses.
 - name: taken from the Display Name of the following account
-- handle: The full Mastodon handle of the follower
 - keywords: These are the hashtags extracted from the account description
 
 A future version include validated urls information from custom fields.
 
 ## Setup
 
-To run you will need a [node.js installation](https://nodejs.org/en/download/). 
+To run you will need a [node.js installation](https://nodejs.org/en/download/) that supports ECMAScript modules (version > 14). 
+I have not tested on anything before 18.2 LTS.
 
 Then download or clone this repository. Before you run the *first time* you will have to run
 
